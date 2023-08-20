@@ -16,9 +16,11 @@ export default function Document() {
           rel="stylesheet"
         />
       </Head>
-      <body className="font-['Inter'_sans-serif] antialiased">
-        <Main />
-        <NextScript />
+      <body>
+        <div className="font-['Inter'_sans-serif] antialiasedmin-h-screen">
+          <Main />
+          <NextScript />
+        </div>
       </body>
     </Html>
   )
