@@ -17,7 +17,7 @@ export default function Document() {
         />
       </Head>
       <body>
-        <div className="font-['Inter'_sans-serif] antialiasedmin-h-screen">
+        <div className="font-['Inter'_sans-serif] antialiased min-h-screen">
           <Main />
           <NextScript />
         </div>
