@@ -21,9 +21,9 @@ export default function Home() {
             </div>
 
             <div className="mt-12 flex gap-4">
-              <Input.Root className="flex-1">
+              <Input.Container className="flex-1">
                 <Input.Control placeholder="Digite o tema do blog" />
-              </Input.Root>
+              </Input.Container>
 
               <button className="bg-primary-600 flex items-center justify-center py-3 px-5 rounded-lg gap-2 hover:bg-primary-700 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 outline-none">
                 <span className="text-white font-semibold">Gerar blog</span>

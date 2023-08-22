@@ -4,12 +4,15 @@ import { SpeedTestSvg } from '@/components/SpeedTestSvg'
 import * as TextArea from '@/components/TextArea'
 import { Question } from '@phosphor-icons/react'
 import * as Tooltip from '@radix-ui/react-tooltip'
+import { useState } from 'react'
 
 export default function BlogCreation() {
+  const [isLoading, setIsLoading] = useState(false)
+
   return (
     <div className="h-full">
       <Header />
-      {true ? (
+      {!isLoading ? (
         <main className="w-full mt-16 mb-24">
           <div className="max-w-[22.5rem] mx-auto">
             <div className="gap-3 flex flex-col">
@@ -86,7 +89,12 @@ export default function BlogCreation() {
               </Input.Root>
             </div>
 
-            <button className="w-full mt-6 bg-primary-600 flex items-center justify-center py-3 px-5 rounded-lg gap-2 hover:bg-primary-700 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 outline-none">
+            <button
+              className="w-full mt-6 bg-primary-600 flex items-center justify-center py-3 px-5 rounded-lg gap-2 hover:bg-primary-700 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-500 outline-none"
+              onClick={() => {
+                setIsLoading(true)
+              }}
+            >
               <span className="text-white font-semibold">Criar blog</span>
             </button>
           </div>

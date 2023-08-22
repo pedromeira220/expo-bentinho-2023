@@ -1,4 +1,5 @@
 import { BlogPostCard } from '@/components/BlogPostCard'
+import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 
 export default function Blog() {
@@ -32,6 +33,7 @@ export default function Blog() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   )
 }
