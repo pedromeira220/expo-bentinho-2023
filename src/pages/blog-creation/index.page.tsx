@@ -1,7 +1,9 @@
 import { Header } from '@/components/Header'
 import * as Input from '@/components/Input'
+import { SelectInput } from '@/components/Select'
 import { SpeedTestSvg } from '@/components/SpeedTestSvg'
 import * as TextArea from '@/components/TextArea'
+import { WhiteSpace } from '@/components/WhiteSpace'
 import { Question } from '@phosphor-icons/react'
 import * as Tooltip from '@radix-ui/react-tooltip'
 import { useState } from 'react'
@@ -24,7 +26,7 @@ export default function BlogCreation() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-6 mt-8">
               <Input.Root>
                 <Input.Label>Tema do blog</Input.Label>
                 <Input.Container className="mt-2">
@@ -71,7 +73,7 @@ export default function BlogCreation() {
                           <p className="text-gray-700 font-semibold text-base/4">
                             Nome único do blog
                           </p>
-                          <p className="text-gray-500 mt-2 text-base/4">
+                          <p className="text-gray-500 mt-2 text-base/5">
                             Escolha um nome exclusivo para identificação interna
                             e na URL do seu blog. Opte por algo fácil de
                             lembrar, sem caracteres especiais ou acentos.
@@ -83,10 +85,16 @@ export default function BlogCreation() {
                     </Tooltip.Root>
                   </Tooltip.Provider>
                 </Input.Container>
+              </Input.Root>
+
+              <div>
+                <Input.Label>Cor primária do blog</Input.Label>
+                <WhiteSpace size={6} />
+                <SelectInput />
                 <Input.Hint>
                   Escolha uma cor que reflita a personalidade do seu blog.
                 </Input.Hint>
-              </Input.Root>
+              </div>
             </div>
 
             <button
