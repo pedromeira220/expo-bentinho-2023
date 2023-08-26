@@ -1,0 +1,87 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Blog {
+  id            String       @id @default(uuid())
+  theme         String
+  description   String
+  name          String
+  slug          String
+  primary_color PrimaryColor
+  creation_date DateTime
+  Post          Post[]
+
+  @@map("blogs")
+}
+
+model Post {
+  id            String    @id @default(uuid())
+  title         String
+  subtitle      String
+  blog          Blog      @relation(fields: [blog_id], references: [id])
+  blog_id       String
+  Section       Section[]
+  thumbnail     Image     @relation(fields: [thumbnail_id], references: [id])
+  thumbnail_id  String
+  creation_date DateTime
+
+  @@map("posts")
+}
+
+model Section {
+  id      String  @id @default(uuid())
+  postion Int
+  post    Post    @relation(fields: [post_id], references: [id])
+  post_id String
+  Text    Text[]
+  Image   Image[]
+
+  @@map("sections")
+}
+
+model Text {
+  id         String      @id @default(uuid())
+  title      String?
+  section    Section     @relation(fields: [section_id], references: [id])
+  section_id String
+  Paragraph  Paragraph[]
+
+  @@map("texts")
+}
+
+model Paragraph {
+  id      String @id @default(uuid())
+  text    Text   @relation(fields: [text_id], references: [id])
+  text_id String
+  value   String
+
+  @@map("paragraphs")
+}
+
+model Image {
+  id          String  @id @default(uuid())
+  search_term String?
+  src         String
+  Post        Post[]
+  section     Section @relation(fields: [section_id], references: [id])
+  section_id  String
+
+  @@map("content_images")
+}
+
+enum PrimaryColor {
+  PURPLE
+  ORANGE
+  BLUE
+  GREEN
+  YELLOW
+}
