@@ -4,6 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { randomUUID } from 'node:crypto'
 
 import posts from '@/data/posts.json'
+import { searchPhoto } from '@/lib/unsplash'
 
 type ImageCreateManyInput = {
   id?: string
@@ -28,7 +29,6 @@ export default async function handler(
   if (req.method !== 'POST') {
     return res.status(405).end()
   }
-  console.log(req.body)
 
   const { theme, description, name, slug, primaryColor } = req.body
 
@@ -76,15 +76,40 @@ export default async function handler(
     },
   })
 
-  const imagesToCreate: (ImageCreateManyInput & { list_id: number })[] =
-    posts.map((post) => {
-      return {
-        id: String(randomUUID()),
-        src: 'https://github.com/pedromeira220.png',
-        search_term: post.thumbnail_search_term,
-        list_id: post.id,
-      }
+  let imagesToCreate: (ImageCreateManyInput & { list_id: number })[] = []
+
+  try {
+    imagesToCreate = await Promise.all(
+      posts.map(async (post) => {
+        let src = ''
+
+        try {
+          const unsplashResponse = await searchPhoto({
+            params: {
+              query: {
+                searchTerm: post.thumbnail_search_term,
+              },
+            },
+          })
+
+          src = unsplashResponse.data.results[0].urls.regular
+        } catch (error) {
+          throw new Error('Error')
+        }
+
+        return {
+          id: String(randomUUID()),
+          src,
+          search_term: post.thumbnail_search_term,
+          list_id: post.id,
+        }
+      }),
+    )
+  } catch (error) {
+    return res.status(500).json({
+      msg: 'Ouve um erro durante a criação do blog',
     })
+  }
 
   await prisma.image.createMany({
     data: imagesToCreate.map((image) => {
