@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "Explorando o Novo iPhone",
+    "subtitle": "Uma análise profunda do mais recente lançamento da Apple.",
+    "thumbnail_search_term": "iPhone"
+  },
+  {
+    "id": 2,
+    "name": "macOS Mastery: Dicas e Truques",
+    "subtitle": "Domine o macOS com essas dicas e truques essenciais.",
+    "thumbnail_search_term": "macOS"
+  },
+  {
+    "id": 3,
+    "name": "AirPods Pro: O Futuro do Áudio",
+    "subtitle": "Descubra a revolução sonora trazida pelos AirPods Pro da Apple.",
+    "thumbnail_search_term": "AirPods Pro"
+  },
+  {
+    "id": 4,
+    "name": "Notícias Quentes: Últimas Atualizações da Apple",
+    "subtitle": "Fique por dentro das novidades mais recentes do ecossistema Apple.",
+    "thumbnail_search_term": "Apple news"
+  },
+  {
+    "id": 5,
+    "name": "iPad Criativo: Potencializando sua Produtividade",
+    "subtitle": "Como o iPad está se tornando uma ferramenta indispensável para profissionais criativos.",
+    "thumbnail_search_term": "iPad"
+  },
+  {
+    "id": 6,
+    "name": "Bastidores da Inovação: O Processo de Design da Apple",
+    "subtitle": "Explore como a Apple cria inovações revolucionárias através de seu processo de design.",
+    "thumbnail_search_term": "Apple design"
+  }
+]

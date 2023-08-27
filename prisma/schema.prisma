@@ -68,12 +68,12 @@ model Paragraph {
 }
 
 model Image {
-  id          String  @id @default(uuid())
+  id          String   @id @default(uuid())
   search_term String?
   src         String
   Post        Post[]
-  section     Section @relation(fields: [section_id], references: [id])
-  section_id  String
+  section     Section? @relation(fields: [section_id], references: [id])
+  section_id  String?
 
   @@map("content_images")
 }
