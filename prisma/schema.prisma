@@ -15,7 +15,7 @@ model Blog {
   theme         String
   description   String
   name          String
-  slug          String
+  slug          String       @unique
   primary_color PrimaryColor
   creation_date DateTime
   Post          Post[]
@@ -33,6 +33,7 @@ model Post {
   thumbnail     Image     @relation(fields: [thumbnail_id], references: [id])
   thumbnail_id  String
   creation_date DateTime
+  content       String
 
   @@map("posts")
 }
