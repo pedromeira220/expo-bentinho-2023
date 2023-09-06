@@ -34,6 +34,7 @@ model Post {
   thumbnail_id  String
   creation_date DateTime
   content       String
+  slug          String
 
   @@map("posts")
 }

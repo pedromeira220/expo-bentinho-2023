@@ -2,20 +2,20 @@ import { prisma } from '@/lib/prisma'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 export const GET = async (req: NextApiRequest, res: NextApiResponse) => {
-  let slug = ''
+  let blogSlug = ''
 
-  if (req.query.slug === undefined) {
+  if (req.query.blogSlug === undefined) {
     return res.status(500).end()
   }
 
-  slug = Array.isArray(req.query.slug)
-    ? req.query.slug.join('')
-    : req.query.slug
+  blogSlug = Array.isArray(req.query.blogSlug)
+    ? req.query.blogSlug.join('')
+    : req.query.blogSlug
 
   const postsFound = await prisma.post.findMany({
     where: {
       blog: {
-        slug,
+        slug: blogSlug,
       },
     },
     include: {

@@ -21,6 +21,21 @@ type PostCreateManyInput = {
   thumbnail_id: string
   creation_date: Date | string
   content: string
+  slug: string
+}
+
+const createSlugFromText = (text: string) => {
+  const slugText = text
+    .normalize('NFKD')
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/[^\w-]+/g, '')
+    .replace(/_/g, '-')
+    .replace(/--+/g, '-')
+    .replace(/-$/g, '')
+
+  return slugText
 }
 
 export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
@@ -126,6 +141,7 @@ export const POST = async (req: NextApiRequest, res: NextApiResponse) => {
       ),
       blog_id: blog.id,
       content: 'Conteúdo teste',
+      slug: createSlugFromText(post.name),
     }
   })
 
